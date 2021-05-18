@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { v5 as uuidv5 } from 'uuid';
 import styled from 'styled-components';
 import AddTaskForm from './AddTaskForm';
+import Button from '../Button';
 
 const TASK_UUID_NAMESPACE = 'b1a166c1-d556-4027-8717-56e7dcd702d5';
 
@@ -13,35 +14,6 @@ const StyledTaskListItem = styled.li`
   list-style: none;
   text-decoration: ${(props) => (props.checked ? 'line-through' : 'none')};
 `;
-
-const StyledDeleteTaskButton = styled.button`
-  background: palevioletred;
-  color: white;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em, 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
-
-/**
- * Button that triggers task deletion.
- *
- * @param {Object} props Props to pass to the component.
- * @param {function} props.onClick Callback function to execute when the button is pressed.
- */
-const DeleteTaskButton = (props) => {
-  const { onClick } = props;
-  return (
-    <StyledDeleteTaskButton type="button" onClick={onClick}>
-      Delete
-    </StyledDeleteTaskButton>
-  );
-};
-
-DeleteTaskButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
 
 /**
  * An item in the task list.
@@ -57,7 +29,7 @@ const TaskListItem = (props) => {
     <StyledTaskListItem checked={task.complete}>
       <input type="checkbox" checked={task.complete} onChange={onChange} />
       {task.title}
-      <DeleteTaskButton onClick={onDelete} />
+      <Button text="Delete" onClick={onDelete} primary />
     </StyledTaskListItem>
   );
 };
