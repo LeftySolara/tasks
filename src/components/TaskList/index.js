@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v5 as uuidv5 } from 'uuid';
+import styled from 'styled-components';
 import AddTaskForm from './AddTaskForm';
 
 const TASK_UUID_NAMESPACE = 'b1a166c1-d556-4027-8717-56e7dcd702d5';
+
+const StyledTaskListItem = styled.li`
+  font-size: 1em;
+  text-align: left;
+  color: ${(props) => (props.checked ? 'gray' : 'black')};
+  list-style: none;
+  text-decoration: ${(props) => (props.checked ? 'line-through' : 'none')};
+`;
 
 /**
  * An item in the task list.
@@ -15,10 +24,10 @@ const TASK_UUID_NAMESPACE = 'b1a166c1-d556-4027-8717-56e7dcd702d5';
 const TaskListItem = (props) => {
   const { task, onChange } = props;
   return (
-    <li>
+    <StyledTaskListItem checked={task.complete}>
       <input type="checkbox" checked={task.complete} onChange={onChange} />
       {task.title}
-    </li>
+    </StyledTaskListItem>
   );
 };
 
