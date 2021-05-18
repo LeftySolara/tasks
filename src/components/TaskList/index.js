@@ -72,7 +72,7 @@ const TaskList = () => {
    *
    * @param {Object} taskID The uuid of the task to update.
    */
-  const handleChange = (taskID) => {
+  const handleCheckboxChanged = (taskID) => {
     const items = [...tasks];
     const targetIndex = items.findIndex((item) => {
       return item.id === taskID;
@@ -91,7 +91,7 @@ const TaskList = () => {
           return (
             <TaskListItem
               task={task}
-              onChange={() => handleChange(task.id)}
+              onChange={() => handleCheckboxChanged(task.id)}
               onDelete={() => handleDelete(task.id)}
             />
           );
