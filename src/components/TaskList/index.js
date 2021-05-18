@@ -14,19 +14,50 @@ const StyledTaskListItem = styled.li`
   text-decoration: ${(props) => (props.checked ? 'line-through' : 'none')};
 `;
 
+const StyledDeleteTaskButton = styled.button`
+  background: palevioletred;
+  color: white;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em, 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+/**
+ * Button that triggers task deletion.
+ *
+ * @param {Object} props Props to pass to the component.
+ * @param {function} props.onClick Callback function to execute when the button is pressed.
+ */
+const DeleteTaskButton = (props) => {
+  const { onClick } = props;
+  return (
+    <StyledDeleteTaskButton type="button" onClick={onClick}>
+      Delete
+    </StyledDeleteTaskButton>
+  );
+};
+
+DeleteTaskButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
 /**
  * An item in the task list.
  *
  * @param {Object} props Props to pass to the component.
  * @param {Object} props.task An object containing task information.
  * @param {function} props.onChange Callback function to execute when the checkbox is clicked.
+ * @param {function} props.onDelete Callback function to handle deleting the task.
  */
 const TaskListItem = (props) => {
-  const { task, onChange } = props;
+  const { task, onChange, onDelete } = props;
   return (
     <StyledTaskListItem checked={task.complete}>
       <input type="checkbox" checked={task.complete} onChange={onChange} />
       {task.title}
+      <DeleteTaskButton onClick={onDelete} />
     </StyledTaskListItem>
   );
 };
@@ -52,6 +83,19 @@ const TaskList = () => {
   };
 
   /**
+   * Removes a task from the list.
+   *
+   * @param {string} taskID The uuid of the task to remove.
+   */
+  const handleDelete = (taskID) => {
+    const items = [...tasks];
+    const filtered = items.filter((item) => {
+      return item.id !== taskID;
+    });
+    setTasks(filtered);
+  };
+
+  /**
    * Updates a task's completion status when its checkbox is clicked.
    *
    * @param {Object} taskID The uuid of the task to update.
@@ -73,7 +117,11 @@ const TaskList = () => {
       <ul>
         {tasks.map((task) => {
           return (
-            <TaskListItem task={task} onChange={() => handleChange(task.id)} />
+            <TaskListItem
+              task={task}
+              onChange={() => handleChange(task.id)}
+              onDelete={() => handleDelete(task.id)}
+            />
           );
         })}
       </ul>
