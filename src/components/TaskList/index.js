@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v5 as uuidv5 } from 'uuid';
 import styled from 'styled-components';
-import AddTaskForm from './AddTaskForm';
+import TaskFormContainer from './AddTaskForm';
 import Button from '../Button';
 
 const TASK_UUID_NAMESPACE = 'b1a166c1-d556-4027-8717-56e7dcd702d5';
@@ -97,7 +97,7 @@ const TaskList = () => {
           );
         })}
       </ul>
-      <AddTaskForm onSubmit={handleAdd} />
+      <TaskFormContainer onSubmit={handleAdd} />
     </div>
   );
 };
