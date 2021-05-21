@@ -15,6 +15,10 @@ const reducer = (state, action) => {
       return state.concat(action.payload);
     case 'READ':
       return state;
+    case 'DELETE':
+      return state.filter((task) => {
+        return task.id !== action.payload.taskID;
+      });
     default:
       throw new Error();
   }
