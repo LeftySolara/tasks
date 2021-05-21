@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 
 const TaskContext = createContext();
-const initialState = [];
+const initialState = [{ id: 0, title: 'Default Task' }];
 
 /**
  * Reducer for the task list.
@@ -11,6 +11,8 @@ const initialState = [];
  */
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'CREATE':
+      return state.concat(action.payload);
     case 'READ':
       return state;
     default:
