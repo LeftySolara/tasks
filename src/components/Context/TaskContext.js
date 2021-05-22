@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 
 const TaskContext = createContext();
-const initialState = [{ id: 0, title: 'Default Task' }];
+const initialState = [{ id: 0, title: 'Default Task', complete: false }];
 
 /**
  * Updates the title of a task.
@@ -16,6 +16,23 @@ const editTask = (state, taskID, title) => {
   const targetIndex = items.findIndex((task) => task.id === taskID);
 
   items[targetIndex].title = title;
+  return items;
+};
+
+/**
+ * Toggles a task's completion status.
+ *
+ * @param {array} state The current list of tasks.
+ * @param {string} taskID The UUID of the task to modify.
+ * @returns {array} The list of tasks with the updated task included.
+ */
+const completeTask = (state, taskID) => {
+  const items = [...state];
+  const targetIndex = items.findIndex((item) => item.id === taskID);
+
+  const target = items[targetIndex];
+  target.complete = !target.complete;
+  items[targetIndex] = target;
   return items;
 };
 
@@ -37,6 +54,8 @@ const reducer = (state, action) => {
       return state.filter((task) => {
         return task.id !== action.payload.taskID;
       });
+    case 'COMPLETE':
+      return completeTask(state, action.payload.taskID);
     default:
       throw new Error();
   }

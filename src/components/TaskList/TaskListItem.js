@@ -11,9 +11,10 @@ import StyledTaskListItem from './style';
  * @param {Object} props.task The task whose information to display.
  * @param {function} props.onEdit Callback to execute when the edit form is submitted.
  * @param {function} props.onDelete Callback to execute when the "Delete" button is pressed.
+ * @param {function} props.onCheck Callback to executs when the checkbox is clicked.
  */
 const TaskListItem = (props) => {
-  const { task, onEdit, onDelete } = props;
+  const { task, onEdit, onDelete, onCheck } = props;
   const [editing, setEditing] = useState(false);
 
   const toggleEditing = () => setEditing(!editing);
@@ -29,6 +30,7 @@ const TaskListItem = (props) => {
 
   const taskDisplay = (
     <>
+      <input type="checkbox" checked={task.complete} onClick={onCheck} />
       {task.title}
       <Button text="Edit" onClick={toggleEditing} />
       <Button text="Delete" onClick={onDelete} primary />

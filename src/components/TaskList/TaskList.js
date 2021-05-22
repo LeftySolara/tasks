@@ -19,7 +19,7 @@ const TaskList = () => {
    */
   const addTask = (title) => {
     const id = uuidv5(title, TASK_UUID_NAMESPACE);
-    const newTask = { id, title };
+    const newTask = { id, title, complete: false };
     dispatchTasks({ type: 'CREATE', payload: newTask });
   };
 
@@ -31,6 +31,15 @@ const TaskList = () => {
    */
   const editTask = (taskID, title) => {
     dispatchTasks({ type: 'UPDATE', payload: { taskID, title } });
+  };
+
+  /**
+   * Toggles a task's completion status.
+   *
+   * @param {string} taskID The UUID of the task to modify.
+   */
+  const completeTask = (taskID) => {
+    dispatchTasks({ type: 'COMPLETE', payload: { taskID } });
   };
 
   /**
@@ -48,6 +57,7 @@ const TaskList = () => {
         task={task}
         onEdit={editTask}
         onDelete={() => deleteTask(task.id)}
+        onCheck={() => completeTask(task.id)}
       />
     );
   });
