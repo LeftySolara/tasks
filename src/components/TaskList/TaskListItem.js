@@ -44,10 +44,11 @@ const TaskListItem = (props) => {
   );
 };
 
-EditTaskForm.propTypes = {
+TaskListItem.propTypes = {
   task: PropTypes.object.isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired,
 };
 
 export default TaskListItem;
