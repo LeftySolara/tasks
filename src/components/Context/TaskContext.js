@@ -3,6 +3,14 @@ import React, { createContext, useReducer } from 'react';
 const TaskContext = createContext();
 const initialState = [{ id: 0, title: 'Default Task' }];
 
+/**
+ * Updates the title of a task.
+ *
+ * @param {array} state The current list of tasks.
+ * @param {string} taskID The UUID of the task to modify.
+ * @param {string} title The new title of the task.
+ * @returns {array} The list of tasks with the updated task included.
+ */
 const editTask = (state, taskID, title) => {
   const items = [...state];
   const targetIndex = items.findIndex((task) => task.id === taskID);
@@ -14,7 +22,7 @@ const editTask = (state, taskID, title) => {
 /**
  * Reducer for the task list.
  *
- * @param {any} state The state to modify.
+ * @param {array} state The current list of tasks.
  * @param {Object} action The payload of information to use during reducer operations.
  */
 const reducer = (state, action) => {
