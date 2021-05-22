@@ -58,6 +58,7 @@ const TaskList = () => {
         onEdit={editTask}
         onDelete={() => deleteTask(task.id)}
         onCheck={() => completeTask(task.id)}
+        key={task.id}
       />
     );
   });
@@ -65,7 +66,7 @@ const TaskList = () => {
   return (
     <ul>
       {listItems}
-      <StyledTaskListItem>
+      <StyledTaskListItem key="0">
         <AddTaskForm onSubmit={addTask} />
       </StyledTaskListItem>
     </ul>
