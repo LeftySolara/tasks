@@ -30,7 +30,7 @@ const TaskListItem = (props) => {
 
   const taskDisplay = (
     <>
-      <input type="checkbox" checked={task.complete} onClick={onCheck} />
+      <input type="checkbox" defaultChecked={task.complete} onClick={onCheck} />
       {task.title}
       <Button text="Edit" onClick={toggleEditing} />
       <Button text="Delete" onClick={onDelete} primary />
