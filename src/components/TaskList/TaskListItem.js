@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import EditTaskForm from './EditTaskForm';
+import StyledTaskListItem from './style';
 
 /**
  * An item in the task list.
@@ -30,11 +31,15 @@ const TaskListItem = (props) => {
     <>
       {task.title}
       <Button text="Edit" onClick={toggleEditing} />
-      <Button text="Delete" onClick={onDelete} />
+      <Button text="Delete" onClick={onDelete} primary />
     </>
   );
 
-  return <li key={task.id}>{editing ? editForm : taskDisplay}</li>;
+  return (
+    <StyledTaskListItem key={task.id}>
+      {editing ? editForm : taskDisplay}
+    </StyledTaskListItem>
+  );
 };
 
 EditTaskForm.propTypes = {
