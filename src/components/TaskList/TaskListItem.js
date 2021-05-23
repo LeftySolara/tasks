@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import EditTaskForm from './EditTaskForm';
-import StyledTaskListItem from './style';
+import {
+  StyledTaskDisplay,
+  StyledTaskListItem,
+  StyledTaskListRow,
+  StyledTaskTitle,
+} from './style';
 
 /**
  * An item in the task list.
@@ -28,18 +33,30 @@ const TaskListItem = (props) => {
     />
   );
 
-  const taskDisplay = (
-    <>
-      <input type="checkbox" defaultChecked={task.complete} onClick={onCheck} />
-      {task.title}
+  const buttonBox = (
+    <div>
       <Button text="Edit" onClick={toggleEditing} />
       <Button text="Delete" onClick={onDelete} primary />
-    </>
+    </div>
+  );
+
+  const taskDisplay = (
+    <StyledTaskDisplay>
+      <input type="checkbox" defaultChecked={task.complete} onClick={onCheck} />
+      <StyledTaskTitle>{task.title}</StyledTaskTitle>
+    </StyledTaskDisplay>
+  );
+
+  const taskListRow = (
+    <StyledTaskListRow>
+      {taskDisplay}
+      {buttonBox}
+    </StyledTaskListRow>
   );
 
   return (
     <StyledTaskListItem key={task.id}>
-      {editing ? editForm : taskDisplay}
+      {editing ? editForm : taskListRow}
     </StyledTaskListItem>
   );
 };

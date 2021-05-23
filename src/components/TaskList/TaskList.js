@@ -4,7 +4,7 @@ import { v5 as uuidv5 } from 'uuid';
 import { TaskContext } from '../Context';
 import TaskListItem from './TaskListItem';
 import AddTaskForm from './AddTaskForm';
-import StyledTaskListItem from './style';
+import StyledTaskList, { StyledTaskListItem } from './style';
 
 const TASK_UUID_NAMESPACE = 'b1a166c1-d556-4027-8717-56e7dcd702d5';
 
@@ -64,12 +64,15 @@ const TaskList = () => {
   });
 
   return (
-    <ul>
-      {listItems}
-      <StyledTaskListItem key="0">
-        <AddTaskForm onSubmit={addTask} />
-      </StyledTaskListItem>
-    </ul>
+    <StyledTaskList>
+      <h2>Tasks</h2>
+      <ul>
+        {listItems}
+        <StyledTaskListItem key="0">
+          <AddTaskForm onSubmit={addTask} />
+        </StyledTaskListItem>
+      </ul>
+    </StyledTaskList>
   );
 };
 

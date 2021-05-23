@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
+import { StyledAddTaskForm } from './style';
 
 /**
  * Form for adding new tasks.
@@ -49,7 +50,7 @@ const AddTaskForm = (props) => {
     </form>
   );
 
-  return <div>{editing ? form : button}</div>;
+  return <StyledAddTaskForm>{editing ? form : button}</StyledAddTaskForm>;
 };
 
 AddTaskForm.propTypes = {
