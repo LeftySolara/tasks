@@ -12,10 +12,8 @@ const StyledTaskListRow = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-content: center;
-  background-color: #bee3db;
-  border: 4px solid #89b0ae;
-  border-radius: 7px;
-  margin-bottom: 15px;
+  background-color: #fcfcfa;
+  border-bottom: 2px solid #8e8d8a;
 `;
 
 const StyledTaskListItem = styled.li`
