@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { StyledAddTaskForm, StyledAddTaskFormInput } from './style';
 
 /**
  * Form for updating a task's information.
@@ -22,8 +23,8 @@ const EditTaskForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <StyledAddTaskForm onSubmit={handleSubmit}>
+      <StyledAddTaskFormInput
         type="text"
         value={text}
         placeholder="Title"
@@ -31,7 +32,7 @@ const EditTaskForm = (props) => {
         onBlur={onBlur}
         required
       />
-    </form>
+    </StyledAddTaskForm>
   );
 };
 

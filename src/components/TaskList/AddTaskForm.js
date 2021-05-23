@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../Button';
-import { StyledAddTaskForm } from './style';
+import {
+  StyledAddTaskButton,
+  StyledAddTaskContainer,
+  StyledAddTaskForm,
+  StyledAddTaskFormInput,
+} from './style';
 
 /**
  * Form for adding new tasks.
@@ -14,7 +18,7 @@ const AddTaskForm = (props) => {
   const { onSubmit } = props;
 
   const [editing, setEditing] = useState(false);
-  const [text, setText] = useState();
+  const [text, setText] = useState('');
 
   /**
    * Switches the form's current editing state.
@@ -35,22 +39,28 @@ const AddTaskForm = (props) => {
     toggleEditing();
   };
 
-  const button = <Button text="Add Task" onClick={toggleEditing} />;
+  const button = (
+    <StyledAddTaskButton type="button" onClick={toggleEditing}>
+      <span>+ &nbsp; Add Task</span>
+    </StyledAddTaskButton>
+  );
 
   const form = (
-    <form onSubmit={handleSubmit}>
-      <input
+    <StyledAddTaskForm onSubmit={handleSubmit}>
+      <StyledAddTaskFormInput
         type="text"
         value={text}
-        placeholder="Title"
+        placeholder="Task Description"
         onChange={(e) => setText(e.target.value)}
         onBlur={toggleEditing}
         required
       />
-    </form>
+    </StyledAddTaskForm>
   );
 
-  return <StyledAddTaskForm>{editing ? form : button}</StyledAddTaskForm>;
+  return (
+    <StyledAddTaskContainer>{editing ? form : button}</StyledAddTaskContainer>
+  );
 };
 
 AddTaskForm.propTypes = {

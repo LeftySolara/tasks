@@ -5,6 +5,7 @@ import EditTaskForm from './EditTaskForm';
 import {
   StyledTaskDisplay,
   StyledTaskListItem,
+  StyledTaskListItemButtonBox,
   StyledTaskListRow,
   StyledTaskTitle,
 } from './style';
@@ -34,10 +35,10 @@ const TaskListItem = (props) => {
   );
 
   const buttonBox = (
-    <div>
+    <StyledTaskListItemButtonBox>
       <Button text="Edit" onClick={toggleEditing} />
       <Button text="Delete" onClick={onDelete} primary />
-    </div>
+    </StyledTaskListItemButtonBox>
   );
 
   const taskDisplay = (
