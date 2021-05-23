@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyledAddTaskForm, StyledAddTaskFormInput } from './style';
 
@@ -14,6 +14,7 @@ import { StyledAddTaskForm, StyledAddTaskFormInput } from './style';
 const EditTaskForm = (props) => {
   const { task, onSubmit, onBlur, onUnmount } = props;
   const [text, setText] = useState(task.title);
+  const textInput = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,6 +22,10 @@ const EditTaskForm = (props) => {
     setText('');
     onUnmount();
   };
+
+  useEffect(() => {
+    textInput.current.focus();
+  });
 
   return (
     <StyledAddTaskForm onSubmit={handleSubmit}>
@@ -30,6 +35,7 @@ const EditTaskForm = (props) => {
         placeholder="Title"
         onChange={(e) => setText(e.target.value)}
         onBlur={onBlur}
+        ref={textInput}
         required
       />
     </StyledAddTaskForm>

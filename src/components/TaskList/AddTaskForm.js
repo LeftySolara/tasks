@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   StyledAddTaskButton,
@@ -19,6 +19,7 @@ const AddTaskForm = (props) => {
 
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState('');
+  const textInput = useRef(null);
 
   /**
    * Switches the form's current editing state.
@@ -53,10 +54,17 @@ const AddTaskForm = (props) => {
         placeholder="Task Description"
         onChange={(e) => setText(e.target.value)}
         onBlur={toggleEditing}
+        ref={textInput}
         required
       />
     </StyledAddTaskForm>
   );
+
+  useEffect(() => {
+    if (editing) {
+      textInput.current.focus();
+    }
+  }, [editing]);
 
   return (
     <StyledAddTaskContainer>{editing ? form : button}</StyledAddTaskContainer>
