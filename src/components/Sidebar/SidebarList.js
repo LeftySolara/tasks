@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyledSidebarList } from './style';
+import styled from 'styled-components';
+
+const StyledSidebarList = styled.ul`
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+`;
 
 /**
  * A list of items to display in the sidebar.
