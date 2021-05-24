@@ -1,10 +1,12 @@
 import React from 'react';
+import SidebarList from './SidebarList';
 import StyledSidebar from './style';
 
 const Sidebar = () => {
   return (
     <StyledSidebar>
-      <h1>Sidebar</h1>
+      <h2>Projects</h2>
+      <SidebarList />
     </StyledSidebar>
   );
 };
