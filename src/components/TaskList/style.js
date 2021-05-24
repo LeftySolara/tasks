@@ -3,8 +3,9 @@ import styled from 'styled-components';
 const StyledTaskList = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 66%;
+  height: 100vh;
   color: #3d3d3b;
 `;
 
