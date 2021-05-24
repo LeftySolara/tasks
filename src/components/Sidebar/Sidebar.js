@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SidebarList from './SidebarList';
+import ProjectList from './ProjectList';
 
 const StyledSidebar = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Sidebar = () => {
   return (
     <StyledSidebar>
       <h2>Projects</h2>
-      <SidebarList />
+      <ProjectList />
     </StyledSidebar>
   );
 };
