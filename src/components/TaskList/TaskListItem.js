@@ -42,7 +42,7 @@ const TaskListItem = (props) => {
   );
 
   const taskDisplay = (
-    <StyledTaskDisplay>
+    <StyledTaskDisplay complete={task.complete}>
       <input type="checkbox" defaultChecked={task.complete} onClick={onCheck} />
       <StyledTaskTitle>{task.title}</StyledTaskTitle>
     </StyledTaskDisplay>

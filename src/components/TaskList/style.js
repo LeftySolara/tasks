@@ -35,6 +35,8 @@ const StyledTaskDisplay = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 80%;
+  color: ${(props) => (props.complete ? '#92928E' : '#3d3d3b')};
+  text-decoration: ${(props) => (props.complete ? 'line-through' : 'none')};
 `;
 
 const StyledTaskName = styled.p`
