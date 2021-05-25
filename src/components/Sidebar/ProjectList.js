@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+
+import { ProjectContext } from '../Context';
+import ProjectListItem from './ProjectListItem';
 
 const StyledSidebarList = styled.ul`
   list-style: none;
@@ -9,18 +12,18 @@ const StyledSidebarList = styled.ul`
 
 /**
  * A list of items to display in the sidebar.
- *
- * @param {Object} props Props to pass to the component.
- * @param {Array} props.children List of items to display in the list.
  */
-const SidebarList = (props) => {
-  const { children } = props;
+const SidebarList = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [projects, dispatchProjects] = useContext(ProjectContext);
+
+  const listItems = projects.map((project) => {
+    return <ProjectListItem title={project.title} key={project.id} />;
+  });
 
   return (
     <StyledSidebarList>
-      {children}
-      <li>Example Project 1</li>
-      <li>Example Project 2</li>
+      <ul>{listItems}</ul>
     </StyledSidebarList>
   );
 };

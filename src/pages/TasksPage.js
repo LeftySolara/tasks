@@ -1,5 +1,5 @@
 import React from 'react';
-import { TaskContextProvider } from '../components/Context';
+import { ProjectContextProvider } from '../components/Context';
 import TaskList from '../components/TaskList';
 import Sidebar from '../components/Sidebar';
 
@@ -7,12 +7,12 @@ import StyledTasksPage from './style';
 
 const TasksPage = () => {
   return (
-    <TaskContextProvider>
+    <ProjectContextProvider>
       <StyledTasksPage>
         <Sidebar />
         <TaskList />
       </StyledTasksPage>
-    </TaskContextProvider>
+    </ProjectContextProvider>
   );
 };
 

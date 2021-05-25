@@ -1,3 +1,7 @@
-import { TaskContext, TaskContextProvider } from './TaskContext';
+import {
+  ProjectContext,
+  ProjectContextProvider,
+  TaskContext,
+} from './ProjectContext';
 
-export { TaskContext, TaskContextProvider };
+export { ProjectContext, ProjectContextProvider, TaskContext };

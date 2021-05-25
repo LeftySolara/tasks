@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { TaskContext } from '../Context';
 import {
   StyledAddTaskButton,
   StyledAddTaskContainer,
@@ -10,13 +10,10 @@ import {
 /**
  * Form for adding new tasks.
  * When the form is inactive, a button that makes it active is rendered.
- *
- * @param {Object} props Props to pass to the component.
- * @param {function} props.onSubmit Callback to execute when the form is submitted.
  */
-const AddTaskForm = (props) => {
-  const { onSubmit } = props;
-
+const AddTaskForm = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [tasks, dispatchTasks] = useContext(TaskContext);
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState('');
   const textInput = useRef(null);
@@ -35,7 +32,7 @@ const AddTaskForm = (props) => {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(text);
+    dispatchTasks({ type: 'ADD_TASK', payload: { title: text } });
     setText('');
     toggleEditing();
   };
@@ -69,10 +66,6 @@ const AddTaskForm = (props) => {
   return (
     <StyledAddTaskContainer>{editing ? form : button}</StyledAddTaskContainer>
   );
-};
-
-AddTaskForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default AddTaskForm;

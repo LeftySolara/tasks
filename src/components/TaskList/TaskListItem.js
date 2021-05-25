@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { TaskContext } from '../Context';
 import Button from '../Button';
 import EditTaskForm from './EditTaskForm';
 import {
@@ -15,20 +16,26 @@ import {
  *
  * @param {Object} props Props to pass to the component.
  * @param {Object} props.task The task whose information to display.
- * @param {function} props.onEdit Callback to execute when the edit form is submitted.
- * @param {function} props.onDelete Callback to execute when the "Delete" button is pressed.
- * @param {function} props.onCheck Callback to executs when the checkbox is clicked.
  */
 const TaskListItem = (props) => {
-  const { task, onEdit, onDelete, onCheck } = props;
+  const { task } = props;
   const [editing, setEditing] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [tasks, dispatchTasks] = useContext(TaskContext);
 
   const toggleEditing = () => setEditing(!editing);
+
+  const handleDelete = () => {
+    dispatchTasks({ type: 'REMOVE_TASK', payload: { id: task.id } });
+  };
+
+  const handleCheck = () => {
+    dispatchTasks({ type: 'COMPLETE_TASK', payload: { taskID: task.id } });
+  };
 
   const editForm = (
     <EditTaskForm
       task={task}
-      onSubmit={onEdit}
       onBlur={toggleEditing}
       onUnmount={toggleEditing}
     />
@@ -37,13 +44,17 @@ const TaskListItem = (props) => {
   const buttonBox = (
     <StyledTaskListItemButtonBox>
       <Button text="Edit" onClick={toggleEditing} />
-      <Button text="Delete" onClick={onDelete} primary />
+      <Button text="Delete" onClick={handleDelete} primary />
     </StyledTaskListItemButtonBox>
   );
 
   const taskDisplay = (
     <StyledTaskDisplay complete={task.complete}>
-      <input type="checkbox" defaultChecked={task.complete} onClick={onCheck} />
+      <input
+        type="checkbox"
+        defaultChecked={task.complete}
+        onClick={handleCheck}
+      />
       <StyledTaskTitle>{task.title}</StyledTaskTitle>
     </StyledTaskDisplay>
   );
@@ -64,9 +75,6 @@ const TaskListItem = (props) => {
 
 TaskListItem.propTypes = {
   task: PropTypes.object.isRequired,
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onCheck: PropTypes.func.isRequired,
 };
 
 export default TaskListItem;
