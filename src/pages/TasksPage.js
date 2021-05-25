@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import { ProjectContextProvider } from '../components/Context';
 import TaskList from '../components/TaskList';
 import Sidebar from '../components/Sidebar';
 
-import StyledTasksPage from './style';
+const StyledTasksPage = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+`;
 
 const TasksPage = () => {
   return (

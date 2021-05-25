@@ -1,11 +1,42 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 import { TaskContext } from '../Context';
-import {
-  StyledAddTaskButton,
-  StyledAddTaskContainer,
-  StyledAddTaskForm,
-  StyledAddTaskFormInput,
-} from './style';
+
+const StyledAddTaskContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+`;
+
+const StyledAddTaskButton = styled.button`
+  background-color: #fcfcfa;
+  color: #3d3d3b;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em, 1em;
+  border: 0px solid #fcfcfa;
+`;
+
+const StyledAddTaskForm = styled.form`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 1em;
+  border-bottom: 2px solid #dfdfde;
+  width: 100%;
+`;
+
+const StyledAddTaskFormInput = styled.input`
+  background-color: #fcfcfa;
+  color: #3d3d3b;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em, 1em;
+  border: 0px solid #fcfcfa;
+  :focus {
+    outline: none;
+  }
+`;
 
 /**
  * Form for adding new tasks.

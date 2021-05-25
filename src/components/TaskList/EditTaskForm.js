@@ -1,7 +1,28 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { TaskContext } from '../Context';
-import { StyledAddTaskForm, StyledAddTaskFormInput } from './style';
+
+const StyledEditTaskForm = styled.form`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 1em;
+  border-bottom: 2px solid #dfdfde;
+  width: 100%;
+`;
+
+const StyledEditTaskFormInput = styled.input`
+  background-color: #fcfcfa;
+  color: #3d3d3b;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em, 1em;
+  border: 0px solid #fcfcfa;
+  :focus {
+    outline: none;
+  }
+`;
 
 /**
  * Form for updating a task's information.
@@ -30,8 +51,8 @@ const EditTaskForm = (props) => {
   });
 
   return (
-    <StyledAddTaskForm onSubmit={handleSubmit}>
-      <StyledAddTaskFormInput
+    <StyledEditTaskForm onSubmit={handleSubmit}>
+      <StyledEditTaskFormInput
         type="text"
         value={text}
         placeholder="Title"
@@ -40,7 +61,7 @@ const EditTaskForm = (props) => {
         ref={textInput}
         required
       />
-    </StyledAddTaskForm>
+    </StyledEditTaskForm>
   );
 };
 

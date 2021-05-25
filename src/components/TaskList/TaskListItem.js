@@ -1,16 +1,44 @@
 import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { TaskContext } from '../Context';
 import Button from '../Button';
 import EditTaskForm from './EditTaskForm';
-import {
-  StyledTaskDisplay,
-  StyledTaskListItem,
-  StyledTaskListItemButtonBox,
-  StyledTaskListRow,
-  StyledTaskTitle,
-} from './style';
 
+const StyledTaskListRow = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: center;
+  background-color: #fcfcfa;
+  border-bottom: 2px solid #dfdfde;
+  font-size: 1em;
+`;
+
+const StyledTaskListItemButtonBox = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+const StyledTaskDisplay = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  color: ${(props) => (props.complete ? '#92928E' : '#3d3d3b')};
+  text-decoration: ${(props) => (props.complete ? 'line-through' : 'none')};
+`;
+
+const StyledTaskListItem = styled.li`
+  list-style: none;
+`;
+
+const StyledTaskTitle = styled.p`
+  margin-left: 8px;
+`;
 /**
  * An item in the task list.
  *

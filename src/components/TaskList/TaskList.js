@@ -1,10 +1,23 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 
 import { TaskContext } from '../Context';
 
 import TaskListItem from './TaskListItem';
 import AddTaskForm from './AddTaskForm';
-import StyledTaskList, { StyledTaskListItem } from './style';
+
+const StyledTaskList = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  width: 66%;
+  height: 100vh;
+  color: #3d3d3b;
+`;
+
+const StyledTaskListItem = styled.li`
+  list-style: none;
+`;
 
 /**
  * Unordered list that displays the user's tasks.
