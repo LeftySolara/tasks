@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { ProjectContext } from '../Context';
 import ProjectListItem from './ProjectListItem';
+import AddProjectForm from './AddProjectForm';
 
 const StyledSidebarList = styled.ul`
   list-style: none;
@@ -23,7 +24,12 @@ const SidebarList = () => {
 
   return (
     <StyledSidebarList>
-      <ul>{listItems}</ul>
+      <ul>
+        {listItems}
+        <li style={{ 'list-style': 'none' }}>
+          <AddProjectForm />
+        </li>
+      </ul>
     </StyledSidebarList>
   );
 };
