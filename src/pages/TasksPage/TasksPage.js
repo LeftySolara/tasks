@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ProjectContextProvider } from '../components/Context';
-import TaskList from '../components/TaskList';
-import Sidebar from '../components/Sidebar';
+import { ProjectContextProvider } from '../../components/Context';
+import TaskList from '../../components/TaskList';
+import Sidebar from '../../components/Sidebar';
 
 const StyledTasksPage = styled.div`
   display: flex;
