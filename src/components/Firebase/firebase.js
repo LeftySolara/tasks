@@ -1,5 +1,6 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,7 +14,24 @@ const config = {
 class Firebase {
   constructor() {
     firebase.initializeApp(config);
+
+    this.auth = firebase.auth();
   }
+
+  // *** Auth API ***
+
+  doCreateUserWithEmailAndPassword = (email, password) =>
+    this.auth.createUserWithEmailAndPassword(email, password);
+
+  doSignInWithEmailAndPassword = (email, password) =>
+    this.auth.signInWithEmailAndPassword(email, password);
+
+  doSignOut = () => this.auth.signOut();
+
+  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);
+
+  doPasswordUpdate = (password) =>
+    this.auth.currentUser.updatePassword(password);
 }
 
 export default Firebase;
