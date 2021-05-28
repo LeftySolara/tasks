@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Button from '../Button';
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
+  const { firebase } = props;
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [passwordOne, setPasswordOne] = useState('');
@@ -15,8 +16,22 @@ const SignUpForm = () => {
     email === '' ||
     fullName === '';
 
+  const resetState = () => {
+    setFullName('');
+    setEmail('');
+    setPasswordOne('');
+    setPasswordTwo('');
+  };
+
   const onSubmit = (event) => {
-    alert('submitted');
+    firebase
+      .doCreateUserWithEmailAndPassword(email, passwordOne)
+      .then(() => {
+        resetState();
+      })
+      .catch((err) => {
+        setError(err);
+      });
     event.preventDefault();
   };
 
