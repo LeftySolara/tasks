@@ -22,14 +22,20 @@ const StyledButton = styled.button`
  *
  * @param {Object} props Props to pass to the component.
  * @param {string} props.text The text to display on the button.
+ * @param {string} props.button The button type.
  * @param {function} props.onClick Callback to execute when the button is pressed.
+ * @param {bool} props.disabled Whether the button is disabled.
  * @param {bool} props.primary Whether to use the primary button style.
  */
 const Button = (props) => {
-  const { text, onClick, primary } = props;
+  const { text, type, onClick, disabled, primary } = props;
 
-  return (
-    <StyledButton type="button" onClick={onClick} primary={primary}>
+  return disabled ? (
+    <StyledButton type={type} primary={primary} disabled>
+      {text}
+    </StyledButton>
+  ) : (
+    <StyledButton type={type} onClick={onClick} primary={primary}>
       {text}
     </StyledButton>
   );
@@ -37,7 +43,16 @@ const Button = (props) => {
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  primary: PropTypes.bool,
+  disabled: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  onClick: undefined,
+  primary: false,
+  disabled: undefined,
 };
 
 export default Button;
