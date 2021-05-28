@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import Button from '../Button';
+import { withFirebase } from '../Context';
 
-const SignUpForm = (props) => {
-  const { firebase } = props;
+import * as ROUTES from '../../constants/routes';
+
+const SignUpFormBase = (props) => {
+  const { firebase, history } = props;
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [passwordOne, setPasswordOne] = useState('');
@@ -28,6 +32,7 @@ const SignUpForm = (props) => {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(() => {
         resetState();
+        history.push(ROUTES.HOME);
       })
       .catch((err) => {
         setError(err);
@@ -75,5 +80,7 @@ const SignUpForm = (props) => {
     </form>
   );
 };
+
+const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 
 export default SignUpForm;

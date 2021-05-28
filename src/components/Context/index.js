@@ -3,6 +3,12 @@ import {
   ProjectContextProvider,
   TaskContext,
 } from './ProjectContext';
-import FirebaseContext from './FirebaseContext';
+import FirebaseContext, { withFirebase } from './FirebaseContext';
 
-export { ProjectContext, ProjectContextProvider, TaskContext, FirebaseContext };
+export {
+  ProjectContext,
+  ProjectContextProvider,
+  TaskContext,
+  FirebaseContext,
+  withFirebase,
+};
