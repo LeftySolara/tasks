@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
+
 import Button from '../Button';
 import { withFirebase } from '../Context';
 
 import * as ROUTES from '../../constants/routes';
+
+const StyledSignUpForm = styled.form`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+  height: 60%;
+  padding: 10px 0px 10px 0px;
+  border: 1px solid #e7e7e6;
+  border-radius: 20px;
+  box-shadow: 0px 0px 21px 2px #706f6c;
+  background-color: 858380;
+`;
 
 const SignUpFormBase = (props) => {
   const { firebase, history } = props;
@@ -41,7 +57,8 @@ const SignUpFormBase = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <StyledSignUpForm onSubmit={onSubmit}>
+      <h1>Sign Up</h1>
       <input
         type="text"
         name="fullName"
@@ -77,7 +94,7 @@ const SignUpFormBase = (props) => {
       <Button text="Sign Up" type="submit" disabled={isInvalid} primary />
 
       {error && <p>{error.message}</p>}
-    </form>
+    </StyledSignUpForm>
   );
 };
 
