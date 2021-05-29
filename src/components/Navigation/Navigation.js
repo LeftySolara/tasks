@@ -1,32 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../SignOut';
 
+const StyledNavigation = styled.ul`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  background-color: #e98074;
+  color: #eae7dc;
+  font-weight: bold;
+  border-bottom: 2px solid #3d3d3b;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #eae7dc;
+`;
+
 const Navigation = () => {
   return (
     <div>
-      <ul>
+      <StyledNavigation>
         <li>
-          <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+          <StyledLink to={ROUTES.SIGN_IN}>Sign In</StyledLink>
         </li>
         <li>
-          <Link to={ROUTES.LANDING}>Landing</Link>
+          <StyledLink to={ROUTES.LANDING}>Landing</StyledLink>
         </li>
         <li>
-          <Link to={ROUTES.HOME}>Home</Link>
+          <StyledLink to={ROUTES.HOME}>Home</StyledLink>
         </li>
         <li>
-          <Link to={ROUTES.ACCOUNT}>Account</Link>
+          <StyledLink to={ROUTES.ACCOUNT}>Account</StyledLink>
         </li>
         <li>
-          <Link to={ROUTES.ADMIN}>Admin</Link>
+          <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>
         </li>
         <li>
           <SignOutButton />
         </li>
-      </ul>
+      </StyledNavigation>
     </div>
   );
 };

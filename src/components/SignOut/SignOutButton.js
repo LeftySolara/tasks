@@ -6,7 +6,7 @@ import { withFirebase } from '../Context';
 const SignOutButtonBase = (props) => {
   const { firebase } = props;
 
-  return <Button text="Sign Out" onClck={firebase.doSignOut} primary />;
+  return <Button text="Sign Out" onClck={firebase.doSignOut} />;
 };
 
 const SignOutButton = withFirebase(SignOutButtonBase);
