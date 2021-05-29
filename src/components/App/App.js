@@ -17,7 +17,7 @@ import * as ROUTES from '../../constants/routes';
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <>
         <Navigation />
 
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -27,7 +27,7 @@ const App = () => {
         <Route path={ROUTES.HOME} component={TasksPage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
-      </div>
+      </>
     </BrowserRouter>
   );
 };
