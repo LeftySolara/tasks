@@ -4,6 +4,7 @@ import {
   TaskContext,
 } from './ProjectContext';
 import FirebaseContext, { withFirebase } from './FirebaseContext';
+import Theme from './ThemeContext';
 
 export {
   ProjectContext,
@@ -11,4 +12,5 @@ export {
   TaskContext,
   FirebaseContext,
   withFirebase,
+  Theme,
 };

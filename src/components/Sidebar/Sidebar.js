@@ -6,7 +6,7 @@ const StyledSidebar = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  background-color: #e98074;
+  background-color: ${(props) => props.theme.colors.grey};
   width: 250px;
   height: 100vh;
 `;

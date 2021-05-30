@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const foreground = '#3d3d3b';
-const background = '#eae7dc';
-const backgroundPrimary = '#e98074';
-
 const StyledButton = styled.button`
-  background: ${(props) => (props.primary ? backgroundPrimary : background)};
-  color: ${(props) => (props.primary ? background : foreground)};
-  font-size: 1em;
+  background: ${(props) =>
+    props.primary ? props.theme.colors.accent : props.theme.colors.background};
+  color: ${(props) => props.theme.colors.foreground};
+  font-size: ${(props) => props.theme.fontSizes.small};
   margin: 1em;
   padding: 0.25em, 1em;
   border: 2px solid
-    ${(props) => (props.primary ? backgroundPrimary : background)};
+    ${(props) =>
+      props.primary
+        ? props.theme.colors.accent
+        : props.theme.colors.background};
   border-radius: 6px;
 `;
 

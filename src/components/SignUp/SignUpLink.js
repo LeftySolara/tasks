@@ -6,7 +6,8 @@ import * as ROUTES from '../../constants/routes';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #e98074;
+  color: ${(props) => props.theme.colors.accent};
+  font-weight: bold;
 `;
 
 const SignUpLink = () => (

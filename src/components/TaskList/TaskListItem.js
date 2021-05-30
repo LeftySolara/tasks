@@ -10,8 +10,8 @@ const StyledTaskListRow = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-content: center;
-  background-color: #fcfcfa;
-  border-bottom: 2px solid #dfdfde;
+  background-color: ${(props) => props.theme.colors.background};
+  border-bottom: 2px solid ${(props) => props.theme.colors.accent};
   font-size: 1em;
 `;
 
@@ -28,7 +28,8 @@ const StyledTaskDisplay = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 80%;
-  color: ${(props) => (props.complete ? '#92928E' : '#3d3d3b')};
+  color: ${(props) =>
+    props.complete ? props.theme.colors.grey : props.theme.colors.foreground};
   text-decoration: ${(props) => (props.complete ? 'line-through' : 'none')};
 `;
 

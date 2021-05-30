@@ -8,17 +8,17 @@ const StyledEditTaskForm = styled.form`
   justify-content: start;
   align-items: center;
   font-size: 1em;
-  border-bottom: 2px solid #dfdfde;
+  border-bottom: 2px solid ${(props) => props.theme.colors.accent};
   width: 100%;
 `;
 
 const StyledEditTaskFormInput = styled.input`
-  background-color: #fcfcfa;
-  color: #3d3d3b;
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.foreground};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em, 1em;
-  border: 0px solid #fcfcfa;
+  border: 0px solid ${(props) => props.theme.colors.background};
   :focus {
     outline: none;
   }

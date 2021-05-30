@@ -13,11 +13,12 @@ import {
 } from '../../pages';
 
 import * as ROUTES from '../../constants/routes';
+import { Theme } from '../Context';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <>
+      <Theme>
         <Navigation />
 
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -27,7 +28,7 @@ const App = () => {
         <Route path={ROUTES.HOME} component={TasksPage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
-      </>
+      </Theme>
     </BrowserRouter>
   );
 };

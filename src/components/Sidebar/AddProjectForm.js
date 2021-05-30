@@ -6,33 +6,37 @@ const StyledAddProjectContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
+  margin-top: 10px;
+  padding-left: 25px;
 `;
 
 const StyledAddProjectButton = styled.button`
-  background-color: #fcfcfa;
-  color: #3d3d3b;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em, 1em;
-  border: 0px solid #fcfcfa;
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.foreground};
+  font-size: ${(props) => props.theme.fontSizes.small};
+  width: 100%
+  margin: 0px;
+  padding: 0px;
+  border: 0px solid ${(props) => props.theme.colors.background};
 `;
 
 const StyledAddProjectForm = styled.form`
   display: flex;
   justify-content: start;
   align-items: center;
-  font-size: 1em;
-  border-bottom: 2px solid #dfdfde;
+  background-color: ${(props) => props.theme.colors.grey};
+  font-size: ${(props) => props.theme.fontSizes.small};
   width: 100%;
 `;
 
 const StyledAddProjectFormInput = styled.input`
-  background-color: #fcfcfa;
-  color: #3d3d3b;
-  font-size: 1em;
+  background-color: ${(props) => props.theme.colors.grey};
+  color: ${(props) => props.theme.colors.foreground};
+  font-size: ${(props) => props.theme.fontSizes.small};
+  width: 100%
   margin: 1em;
   padding: 0.25em, 1em;
-  border: 0px solid #fcfcfa;
+  border: 0px solid ${(props) => props.theme.colors.background};
   :focus {
     outline: none;
   }

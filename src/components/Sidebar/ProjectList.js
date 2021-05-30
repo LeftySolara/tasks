@@ -37,9 +37,7 @@ const ProjectList = () => {
   return (
     <StyledProjectList>
       {listItems}
-      <li style={{ 'list-style': 'none' }}>
-        <AddProjectForm />
-      </li>
+      <AddProjectForm />
     </StyledProjectList>
   );
 };

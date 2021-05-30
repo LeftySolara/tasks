@@ -9,30 +9,30 @@ const StyledAddTaskContainer = styled.div`
 `;
 
 const StyledAddTaskButton = styled.button`
-  background-color: #fcfcfa;
-  color: #3d3d3b;
-  font-size: 1em;
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.foreground};
+  font-size: ${(props) => props.theme.fontSizes.small};
   margin: 1em;
   padding: 0.25em, 1em;
-  border: 0px solid #fcfcfa;
+  border: 0px solid ${(props) => props.theme.colors.background};
 `;
 
 const StyledAddTaskForm = styled.form`
   display: flex;
   justify-content: start;
   align-items: center;
-  font-size: 1em;
-  border-bottom: 2px solid #dfdfde;
+  font-size: ${(props) => props.theme.fontSizes.small};
+  border-bottom: 2px solid ${(props) => props.theme.colors.accent};
   width: 100%;
 `;
 
 const StyledAddTaskFormInput = styled.input`
-  background-color: #fcfcfa;
-  color: #3d3d3b;
-  font-size: 1em;
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.foreground};
+  font-size: ${(props) => props.theme.fontSizes.small};
   margin: 1em;
   padding: 0.25em, 1em;
-  border: 0px solid #fcfcfa;
+  border: 0px solid ${(props) => props.theme.colors.background};
   :focus {
     outline: none;
   }

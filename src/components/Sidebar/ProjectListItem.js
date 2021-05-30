@@ -6,10 +6,13 @@ const StyledProjectListItem = styled.li`
   text-align: left;
   padding-left: 15px;
   margin-bottom: 5px;
-  border: 10px solid ${(props) => (props.selected ? '#fcfcfa' : '#e98074')};
+  border: 10px solid
+    ${(props) =>
+      props.selected ? props.theme.colors.accent : props.theme.colors.grey};
+  background-color: ${(props) =>
+    props.selected ? props.theme.colors.accent : props.theme.colors.grey};
+  color: ${(props) => props.theme.colors.foreground}
   font-weight: bold;
-  background-color: ${(props) => (props.selected ? '#fcfcfa' : '#e98074')};
-  color: ${(props) => (props.selected ? '#e98074' : 'fcfcfa')};
 `;
 
 const ProjectListItem = (props) => {

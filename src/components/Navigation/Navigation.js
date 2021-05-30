@@ -15,15 +15,15 @@ const StyledNavigation = styled.ul`
   width: 100%;
   height: 100%;
   list-style: none;
-  background-color: #e98074;
-  color: #eae7dc;
+  background-color: ${(props) => props.theme.colors.accent};
+  color: ${(props) => props.theme.colors.foreground};
   font-weight: bold;
-  border-bottom: 2px solid #3d3d3b;
+  border-bottom: 2px solid ${(props) => props.theme.colors.grey};
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #eae7dc;
+  color: ${(props) => props.theme.colors.foreground};
 `;
 
 const Navigation = () => {

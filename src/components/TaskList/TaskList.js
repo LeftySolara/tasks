@@ -12,7 +12,7 @@ const StyledTaskList = styled.div`
   justify-content: flex-start;
   width: 66%;
   height: 100vh;
-  color: #3d3d3b;
+  color: ${(props) => props.theme.colors.foreground};
 `;
 
 const StyledTaskListItem = styled.li`
