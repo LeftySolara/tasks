@@ -26,31 +26,44 @@ const StyledLink = styled(Link)`
   color: ${(props) => props.theme.colors.foreground};
 `;
 
-const Navigation = () => {
-  return (
-    <div>
-      <StyledNavigation>
-        <li>
-          <StyledLink to={ROUTES.SIGN_IN}>Sign In</StyledLink>
-        </li>
-        <li>
-          <StyledLink to={ROUTES.LANDING}>Landing</StyledLink>
-        </li>
-        <li>
-          <StyledLink to={ROUTES.HOME}>Home</StyledLink>
-        </li>
-        <li>
-          <StyledLink to={ROUTES.ACCOUNT}>Account</StyledLink>
-        </li>
-        <li>
-          <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>
-        </li>
-        <li>
-          <SignOutButton />
-        </li>
-      </StyledNavigation>
-    </div>
-  );
+/* Navigation links to display when a user is logged in. */
+const NavigationAuth = () => (
+  <div>
+    <StyledNavigation>
+      <li>
+        <StyledLink to={ROUTES.LANDING}>Landing</StyledLink>
+      </li>
+      <li>
+        <StyledLink to={ROUTES.HOME}>Home</StyledLink>
+      </li>
+      <li>
+        <StyledLink to={ROUTES.ACCOUNT}>Account</StyledLink>
+      </li>
+      <li>
+        <SignOutButton />
+      </li>
+    </StyledNavigation>
+  </div>
+);
+
+/* Links to display when a user is not logged in. */
+const NavigationNonAuth = () => (
+  <div>
+    <StyledNavigation>
+      <li>
+        <StyledLink to={ROUTES.LANDING}>Landing</StyledLink>
+      </li>
+      <li>
+        <StyledLink to={ROUTES.SIGN_IN}>Sign In</StyledLink>
+      </li>
+    </StyledNavigation>
+  </div>
+);
+
+const Navigation = (props) => {
+  const { authUser } = props;
+
+  return <>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</>;
 };
 
 export default Navigation;
