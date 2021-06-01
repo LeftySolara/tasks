@@ -116,15 +116,7 @@ const TaskFormContainer = (props) => {
     toggleEditing();
   };
 
-  return (
-    // prettier-ignore
-    <>
-      {editing
-        ? <AddTaskForm onSubmit={handleSubmit} onBlur={toggleEditing} />
-        : <Button text="Add Task" onClick={toggleEditing} primary/>
-      }
-    </>
-  );
+  return <AddTaskForm onSubmit={handleSubmit} onBlur={toggleEditing} />;
 };
 
 export default TaskFormContainer;

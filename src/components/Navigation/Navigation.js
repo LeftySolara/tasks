@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../SignOut';
 
+import { withAuthentication } from '../Context';
+
 const StyledNavigation = styled.ul`
   display: flex;
   flex-flow: row nowrap;
@@ -66,4 +68,4 @@ const Navigation = (props) => {
   return <>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</>;
 };
 
-export default Navigation;
+export default withAuthentication(Navigation);
