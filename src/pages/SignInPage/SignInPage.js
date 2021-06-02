@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SignInForm from '../../components/SignIn';
 import SignUpLink from '../../components/SignUp';
+import { ForgotPasswordLink } from '../../components/ForgotPassword';
 
 const StyledSignInPage = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const SignInPage = () => {
   return (
     <StyledSignInPage>
       <SignInForm />
+      <ForgotPasswordLink />
       <SignUpLink />
     </StyledSignInPage>
   );
