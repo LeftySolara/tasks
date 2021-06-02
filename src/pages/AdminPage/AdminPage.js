@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withFirebase } from '../../components/Context';
+import { withAuthorization } from '../../components/Context';
 
 const UserList = (props) => {
   const { users } = props;
@@ -54,4 +54,6 @@ const AdminPage = (props) => {
   );
 };
 
-export default withFirebase(AdminPage);
+const condition = (authUser) => !!authUser;
+
+export default withAuthorization(condition)(AdminPage);
