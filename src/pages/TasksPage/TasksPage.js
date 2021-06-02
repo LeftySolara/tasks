@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ProjectContextProvider } from '../../components/Context';
+import {
+  ProjectContextProvider,
+  withAuthorization,
+} from '../../components/Context';
 import TaskList from '../../components/TaskList';
 import Sidebar from '../../components/Sidebar';
 
@@ -21,4 +24,6 @@ const TasksPage = () => {
   );
 };
 
-export default TasksPage;
+const condition = (authUser) => !!authUser;
+
+export default withAuthorization(condition)(TasksPage);
