@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,6 +17,7 @@ class Firebase {
     firebase.initializeApp(config);
 
     this.auth = firebase.auth();
+    this.db = firebase.database();
   }
 
   // *** Auth API ***
@@ -32,6 +34,12 @@ class Firebase {
 
   doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
+
+  // *** User API ***
+
+  user = (uid) => this.db.ref(`users/${uid}`);
+
+  users = () => this.db.ref('users');
 }
 
 export default Firebase;
