@@ -10,12 +10,12 @@ const withAuthentication = (Component) => {
     const [authUser, setAuthUser] = useState(null);
 
     useEffect(() => {
-      const listener = firebase.auth.onAuthStateChanged((user) => {
+      firebase.auth.onAuthStateChanged((user) => {
         // eslint-disable-next-line no-unused-expressions
         user ? setAuthUser(user) : setAuthUser(null);
       });
-      return listener();
-    }, authUser);
+      return null;
+    }, [authUser]);
 
     return (
       <AuthUserContext.Provider value={authUser}>

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../SignOut';
 
-import { withAuthentication } from '../Context';
+import { AuthUserContext, withAuthentication } from '../Context';
 
 const StyledNavigation = styled.ul`
   display: flex;
@@ -62,8 +62,8 @@ const NavigationNonAuth = () => (
   </div>
 );
 
-const Navigation = (props) => {
-  const { authUser } = props;
+const Navigation = () => {
+  const authUser = useContext(AuthUserContext);
 
   return <>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</>;
 };
