@@ -46,6 +46,10 @@ const SignUpFormBase = (props) => {
   const onSubmit = (event) => {
     firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
+      .then((authUser) => {
+        // Create a user in the backend database
+        return firebase.user(authUser.user.uid).set({ email });
+      })
       .then(() => {
         resetState();
         history.push(ROUTES.HOME);

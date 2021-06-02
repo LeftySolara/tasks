@@ -42,6 +42,9 @@ const NavigationAuth = () => (
         <StyledLink to={ROUTES.ACCOUNT}>Account</StyledLink>
       </li>
       <li>
+        <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>
+      </li>
+      <li>
         <SignOutButton />
       </li>
     </StyledNavigation>
