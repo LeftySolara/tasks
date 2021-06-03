@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { ProjectContext } from '../Context';
+import { ProjectContext, withFirebase } from '../Context';
 
 const StyledAddProjectContainer = styled.div`
   display: flex;
@@ -42,7 +42,8 @@ const StyledAddProjectFormInput = styled.input`
   }
 `;
 
-const AddProjectForm = () => {
+const AddProjectForm = (props) => {
+  const { firebase } = props;
   // eslint-disable-next-line no-unused-vars
   const [projects, dispatchProjects] = useContext(ProjectContext);
   const [editing, setEditing] = useState(false);
@@ -55,7 +56,11 @@ const AddProjectForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatchProjects({ type: 'ADD_PROJECT', payload: { title: text } });
+    dispatchProjects({
+      type: 'ADD_PROJECT',
+      payload: { title: text },
+      firebase,
+    });
     setText('');
     toggleEditing();
   };
@@ -94,4 +99,4 @@ const AddProjectForm = () => {
   );
 };
 
-export default AddProjectForm;
+export default withFirebase(AddProjectForm);

@@ -76,9 +76,11 @@ const removeTask = (state, taskID) => {
  * @param {String} title The title to assign to the new task.
  * @returns {Array} Thelist of projects with the new project added.
  */
-const addProject = (state, title) => {
+const addProject = (state, title, firebase) => {
   const id = uuidv5(title, PROJECT_UUID_NAMESPACE);
   const newProject = { id, title };
+  firebase.addProject(newProject);
+
   return state.concat(newProject);
 };
 
@@ -124,7 +126,7 @@ const reducer = (state, action) => {
     case 'COMPLETE_TASK':
       return completeTask(state, action.payload.taskID);
     case 'ADD_PROJECT':
-      return addProject(state, action.payload.title);
+      return addProject(state, action.payload.title, action.firebase);
     case 'GET_PROJECTS':
       return state;
     case 'EDIT_PROJECT':
