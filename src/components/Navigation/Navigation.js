@@ -15,12 +15,11 @@ const StyledNavigation = styled.ul`
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: 5vh;
   list-style: none;
   background-color: ${(props) => props.theme.colors.accent};
   color: ${(props) => props.theme.colors.foreground};
   font-weight: bold;
-  border-bottom: 2px solid ${(props) => props.theme.colors.grey};
 `;
 
 const StyledLink = styled(Link)`
@@ -51,24 +50,10 @@ const NavigationAuth = () => (
   </div>
 );
 
-/* Links to display when a user is not logged in. */
-const NavigationNonAuth = () => (
-  <div>
-    <StyledNavigation>
-      <li>
-        <StyledLink to={ROUTES.LANDING}>Landing</StyledLink>
-      </li>
-      <li>
-        <StyledLink to={ROUTES.SIGN_IN}>Sign In</StyledLink>
-      </li>
-    </StyledNavigation>
-  </div>
-);
-
 const Navigation = () => {
   const authUser = useContext(AuthUserContext);
 
-  return <>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</>;
+  return <>{authUser ? <NavigationAuth /> : null}</>;
 };
 
 export default withAuthentication(Navigation);
