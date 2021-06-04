@@ -29,11 +29,12 @@ const StyledLandingPage = styled.div`
   padding: 0px;
   background-color: ${(props) => props.theme.colors.background};
   color: ${(props) => props.theme.colors.foreground};
+  font-family: 'Open Sans', sans-serif;
   font-size: 2em;
 `;
 
 const StyledLandingContainer = styled.div`
-  animation: ${FadeIn} 2s;
+  animation: ${FadeIn} 1.5s;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -42,13 +43,12 @@ const StyledLandingContainer = styled.div`
   height: 100%;
   margin: 0px;
   padding: 0px;
-  font-family: Ubuntu, 'Open Sans', sans-serif;
 `;
 
 const StyledSlogan = styled.h1`
   width: 100%;
   text-align: center;
-  font-family: cursive, sans-serif;
+  font-family: 'Pacifico', cursive;
 `;
 
 const StyledLink = styled(Link)`
