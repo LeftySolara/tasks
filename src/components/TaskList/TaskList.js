@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { TaskContext } from '../Context';
+import { TaskContext, withFirebase } from '../Context';
 
 import TaskListItem from './TaskListItem';
 import AddTaskForm from './AddTaskForm';
@@ -22,19 +22,28 @@ const StyledTaskListItem = styled.li`
 /**
  * Unordered list that displays the user's tasks.
  */
-const TaskList = () => {
+const TaskListBase = (props) => {
+  const { firebase } = props;
   // eslint-disable-next-line no-unused-vars
   const [tasks, dispatchTasks] = useContext(TaskContext);
+  const listItems = [];
 
-  const listItems = tasks.map((task) => {
-    return <TaskListItem task={task} key={task.id} />;
-  });
+  useEffect(() => {
+    firebase.getUserTasks((snapshot) => {
+      snapshot.forEach((snap) => {
+        const data = snap.val();
+        listItems.push(data);
+      });
+    });
+  }, []);
 
   return (
     <StyledTaskList>
       <h2>Tasks</h2>
       <ul>
-        {listItems}
+        {tasks.map((task) => {
+          return <TaskListItem task={task} key={task.id} />;
+        })}
         <StyledTaskListItem key="0">
           <AddTaskForm />
         </StyledTaskListItem>
@@ -42,5 +51,7 @@ const TaskList = () => {
     </StyledTaskList>
   );
 };
+
+const TaskList = withFirebase(TaskListBase);
 
 export default TaskList;

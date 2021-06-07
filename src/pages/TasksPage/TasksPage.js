@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {
   ProjectContextProvider,
+  TaskContextProvider,
   withAuthorization,
 } from '../../components/Context';
 import TaskList from '../../components/TaskList';
@@ -16,10 +17,12 @@ const StyledTasksPage = styled.div`
 const TasksPage = () => {
   return (
     <ProjectContextProvider>
-      <StyledTasksPage>
-        <Sidebar />
-        <TaskList />
-      </StyledTasksPage>
+      <TaskContextProvider>
+        <StyledTasksPage>
+          <Sidebar />
+          <TaskList />
+        </StyledTasksPage>
+      </TaskContextProvider>
     </ProjectContextProvider>
   );
 };

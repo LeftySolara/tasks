@@ -63,7 +63,7 @@ const AddTaskForm = () => {
    */
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatchTasks({ type: 'ADD_TASK', payload: { title: text } });
+    dispatchTasks({ type: 'ADD', payload: { title: text } });
     setText('');
     toggleEditing();
   };

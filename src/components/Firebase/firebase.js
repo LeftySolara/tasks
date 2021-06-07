@@ -41,6 +41,38 @@ class Firebase {
 
   users = () => this.db.ref('users');
 
+  // *** Task API ***
+
+  /**
+   * Adds a new task to the database.
+   *
+   * @param {Object} task The task to add.
+   * @param {string} task.id The UUID of the task.
+   * @param {string} task.title The title of the task.
+   * @param {boolean} task.complete The completion status of the task.
+   */
+  addTask = (task) => {
+    const { uid } = this.auth.currentUser;
+    const ref = this.db.ref(`tasks/${uid}/${task.id}`);
+    ref.set({
+      id: task.id,
+      title: task.title,
+      complete: task.complete,
+    });
+  };
+
+  /**
+   * Gets a list of the current user's tasks.
+   *
+   * @param {Function} callback Callback function that takes a ref snapshot object.
+   * @returns {Promise} Promise containing a snapshot of the user's project info.
+   *
+   */
+  getUserTasks = (callback) => {
+    const { uid } = this.auth.currentUser;
+    return this.db.ref(`tasks/${uid}`).once('value', callback);
+  };
+
   // *** Project API ***
 
   /**

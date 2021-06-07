@@ -1,8 +1,6 @@
-import {
-  ProjectContext,
-  ProjectContextProvider,
-  TaskContext,
-} from './ProjectContext';
+import { ProjectContext, ProjectContextProvider } from './ProjectContext';
+
+import { TaskContext, TaskContextProvider } from './TaskContext';
 
 import FirebaseContext, { withFirebase } from './FirebaseContext';
 
@@ -17,6 +15,7 @@ export {
   ProjectContext,
   ProjectContextProvider,
   TaskContext,
+  TaskContextProvider,
   FirebaseContext,
   withFirebase,
   withAuthentication,
